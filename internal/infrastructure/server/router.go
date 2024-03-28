@@ -1,4 +1,4 @@
-package router
+package server
 
 import (
 	"fmt"
@@ -9,11 +9,13 @@ import (
 
 type Router struct {
 	mux *http.ServeMux
+    logger *log.Logger
 }
 
-func NewRouter() Router {
+func NewRouter(logger *log.Logger) Router {
 	return Router{
 		mux: http.NewServeMux(),
+        logger: logger,
 	}
 }
 

@@ -3,21 +3,21 @@ package main
 import (
 	"net/http"
 
-	"github.com/juniorrodes/exchange/internal/router"
+	"github.com/juniorrodes/exchange/internal/infrastructure/server"
 )
 
 func main() {
-	r := router.NewRouter()
+	router := server.NewRouter()
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Hello world"))
 	})
 
-	r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
+	router.Get("/test", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("só um teste"))
 	})
 
-	r.Serve(":8080")
+	router.Serve(":8080")
 }
