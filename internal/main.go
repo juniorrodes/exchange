@@ -1,23 +1,22 @@
 package main
 
 import (
-	"net/http"
+	"log"
+	"os"
 
+	"github.com/juniorrodes/exchange/internal/app/controller"
 	"github.com/juniorrodes/exchange/internal/infrastructure/server"
 )
 
 func main() {
-	router := server.NewRouter()
+    logger := log.New(os.Stdout, "INFO: ", log.Ldate | log.Ltime | log.Lshortfile)
 
-	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("Hello world"))
-	})
+	router := server.NewRouter(logger)
+    converteController := controller.NewConverterController(logger)
 
-	router.Get("/test", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("só um teste"))
-	})
+    router.Get("/convert", controller.ConvertPage)
+
+	router.Get("/convert/{from}/{to}/{value}", converteController.Convert)
 
 	router.Serve(":8080")
 }

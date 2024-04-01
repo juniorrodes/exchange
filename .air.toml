@@ -2,7 +2,7 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-# pre_cmd = ["mkdir tmp"]
+ pre_cmd = ["templ generate"]
 cmd = "go build -o ./tmp/exchange internal/main.go"
 bin = "tmp/exchange"
 include_ext = ["go", "temp"]

@@ -21,7 +21,7 @@ func NewRouter(logger *log.Logger) Router {
 
 func (r *Router) Get(path string, handler http.HandlerFunc) {
 	methodPath := fmt.Sprintf("GET %s", path)
-
+    
 	r.mux.Handle(methodPath, handler)
 }
 
