@@ -1,0 +1,35 @@
+package components
+
+templ ConvertPage(currencies []string) {
+	<html>
+		<head>
+			<meta charset="utf8"/>
+			<meta name="viewport" content="width=device-width,initial-scale=1"/>
+			<title>Converter</title>
+			<script src="https://unpkg.com/htmx.org@1.9.11"></script>
+		</head>
+		<body>
+			<div>
+				<h1>
+					Eu vou converter
+				</h1>
+                <form hx-post="/convert" hx-swap="beforeend">
+				    <select name="from">
+				    	for _, currency := range(currencies) {
+				    		<option value={ currency }>{ currency } </option>
+                        }
+				    </select>
+                    <input type="number" name="value" placeholder="Inset the value to convert" />
+                    <div> to </div>
+				    <select name="to">
+				    	for _, currency := range(currencies) {
+				    		<option value={ currency }>{ currency } </option>
+                        }
+				    </select>
+                    <button type="submit"> submit </button>
+                </form>
+			</div>
+		</body>
+	</html>
+}
+

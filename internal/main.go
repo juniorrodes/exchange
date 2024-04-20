@@ -2,9 +2,11 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"os"
 
-	"github.com/juniorrodes/exchange/internal/app/controller"
+	"github.com/juniorrodes/exchange/internal/api/controller"
+	"github.com/juniorrodes/exchange/internal/api/services"
 	"github.com/juniorrodes/exchange/internal/infrastructure/server"
 )
 
@@ -12,11 +14,15 @@ func main() {
     logger := log.New(os.Stdout, "INFO: ", log.Ldate | log.Ltime | log.Lshortfile)
 
 	router := server.NewRouter(logger)
-    converteController := controller.NewConverterController(logger)
+    client := http.DefaultClient
 
-    router.Get("/convert", controller.ConvertPage)
+    exchngeService := services.NewExchangeService(logger, client)
 
-	router.Get("/convert/{from}/{to}/{value}", converteController.Convert)
+    converteController := controller.NewConverterController(logger, exchngeService)
+
+    router.Get("/converter", controller.ConvertPage)
+
+	router.Post("/convert", converteController.Convert)
 
 	router.Serve(":8080")
 }
