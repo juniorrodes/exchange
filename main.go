@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/juniorrodes/exchange/internal/api/controller"
-	"github.com/juniorrodes/exchange/internal/api/services"
-	"github.com/juniorrodes/exchange/internal/infrastructure/server"
+	controller "github.com/juniorrodes/exchange/pkg/controllers"
+	"github.com/juniorrodes/exchange/pkg/exchange"
+	"github.com/juniorrodes/exchange/pkg/server"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 	router := server.NewRouter(logger)
     client := http.DefaultClient
 
-    exchngeService := services.NewExchangeService(logger, client)
+    exchngeService := exchange.NewExchangeService(logger, client)
 
     converteController := controller.NewConverterController(logger, exchngeService)
 

@@ -6,20 +6,17 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/juniorrodes/exchange/internal/api/model"
-	"github.com/juniorrodes/exchange/internal/api/services"
-	"github.com/juniorrodes/exchange/internal/components"
+	"github.com/juniorrodes/exchange/components"
+	"github.com/juniorrodes/exchange/pkg/exchange"
 )
 
 type ConverterController struct {
-    currencyMap model.Currencies
     logger     *log.Logger
-    exchangeService *services.ExchangeService
+    exchangeService *exchange.Service
 }
 
-func NewConverterController(logger *log.Logger, service *services.ExchangeService) *ConverterController {
+func NewConverterController(logger *log.Logger, service *exchange.Service) *ConverterController {
     return &ConverterController{
-        currencyMap: make(model.Currencies),
         logger: logger,
         exchangeService: service,
     }
@@ -47,5 +44,5 @@ func (c *ConverterController) Convert(w http.ResponseWriter, r *http.Request) {
 }
 
 func ConvertPage(w http.ResponseWriter, r *http.Request) {
-    components.ConvertPage(model.CurrenciesCodes).Render(r.Context(), w)
+    components.ConvertPage(exchange.SupportedCurrencies).Render(r.Context(), w)
 }

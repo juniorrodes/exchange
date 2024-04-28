@@ -1,7 +1,20 @@
-package model
+package exchange
+
+import "time"
+
+type rates map[string]float64
+
+type cacheMap map[string]*exchangeData
+
+type exchangeData struct {
+    Rates rates `json:"rates"`
+    NextUpdate string `json:"time_next_update_utc"`
+    expiration time.Time
+}
+
 
 var (
-    CurrenciesCodes = []string{"USD", "EUR", "JPY", "GBP", "AUD", "CAD", "CHF", "CNY", "SEK",
+    SupportedCurrencies = []string{"USD", "EUR", "JPY", "GBP", "AUD", "CAD", "CHF", "CNY", "SEK",
         "NZD", "BRL", "RUB", "INR", "TRY", "KRW", "ZAR", "HKD", "SGD", "NOK", "MXN", "IDR",
         "MYR", "PLN", "DKK", "THB", "PHP", "HUF", "CZK", "ILS", "CLP", "PKR", "AED", "SAR",
         "TWD", "KWD", "QAR", "EGP", "NPR", "BDT", "OMR", "COP", "ARS", "VND", "IQD", "JOD",
@@ -15,5 +28,3 @@ var (
         "TTD", "TND", "TMT", "UGX", "UAH", "AED", "VUV", "VUV", "WST", "YER", "ZMW", "ZWL",
     }
 )
-
-type Currencies map[string]map[string]float32
