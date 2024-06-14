@@ -23,7 +23,7 @@ func ConvertPage(currencies []string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><meta charset=\"utf8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Converter</title><script src=\"https://unpkg.com/htmx.org@1.9.11\"></script></head><body><div><h1>Eu vou converter</h1><form hx-post=\"/convert\" hx-swap=\"beforeend\"><select name=\"from\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><meta charset=\"utf8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Converter</title><script src=\"https://unpkg.com/htmx.org@1.9.11\"></script><link rel=\"stylesheet\" href=\"/static/css/output.css\"></head><body class=\"container mx-auto font-sans bg-slate-600 text-white\"><div class=\"flex flex-col content-center\"><h1 class=\"text-lg font-bold flex-shrink self-center\">Eu vou converter</h1><form class=\"flex flex-col content-center self-center\" hx-post=\"/convert\" hx-swap=\"beforeend\"><div class=\"flex\"><select name=\"from\" class=\"bg-transparent\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -35,7 +35,7 @@ func ConvertPage(currencies []string) templ.Component {
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(currency)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 19, Col: 34}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 21, Col: 38}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -48,7 +48,7 @@ func ConvertPage(currencies []string) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(currency)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 19, Col: 47}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 21, Col: 51}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -59,7 +59,7 @@ func ConvertPage(currencies []string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select> <input type=\"number\" name=\"value\" placeholder=\"Inset the value to convert\"><div>to </div><select name=\"to\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select> <input type=\"number\" name=\"value\" placeholder=\"Inset the value to convert\"> <select name=\"to\" class=\"bg-transparent\"><option hiden disabled selected value>to</option> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -71,7 +71,7 @@ func ConvertPage(currencies []string) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(currency)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 26, Col: 34}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 28, Col: 38}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -84,7 +84,7 @@ func ConvertPage(currencies []string) templ.Component {
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(currency)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 26, Col: 47}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Convert.templ`, Line: 28, Col: 51}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -95,7 +95,7 @@ func ConvertPage(currencies []string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select> <button type=\"submit\">submit </button></form></div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</select></div><button class=\"self-center p-1 rounded bg-slate-100 hover:bg-slate-200 active:bg-slate-400\" type=\"submit\">submit</button></form></div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -23,7 +23,7 @@ func HomePage() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><head><title>Home</title></head><body><h1>Home</h1><p>Welcome to the home page</p></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html><div class=\"justify-center\"><head><title class=\"font-serif\">Home</title></head><body><h1>Home</h1><p>Welcome to the home page</p></body></div></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

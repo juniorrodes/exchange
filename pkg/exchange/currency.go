@@ -12,7 +12,6 @@ type exchangeData struct {
     expiration time.Time
 }
 
-
 var (
     SupportedCurrencies = []string{"USD", "EUR", "JPY", "GBP", "AUD", "CAD", "CHF", "CNY", "SEK",
         "NZD", "BRL", "RUB", "INR", "TRY", "KRW", "ZAR", "HKD", "SGD", "NOK", "MXN", "IDR",

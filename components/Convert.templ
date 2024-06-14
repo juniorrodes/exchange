@@ -7,26 +7,33 @@ templ ConvertPage(currencies []string) {
 			<meta name="viewport" content="width=device-width,initial-scale=1"/>
 			<title>Converter</title>
 			<script src="https://unpkg.com/htmx.org@1.9.11"></script>
+            <link rel="stylesheet" href="/static/css/output.css" />
 		</head>
-		<body>
-			<div>
-				<h1>
+		<body class="container mx-auto font-sans bg-slate-600 text-white">
+			<div class="flex flex-col content-center">
+				<h1 class="text-lg font-bold flex-shrink self-center">
 					Eu vou converter
 				</h1>
-                <form hx-post="/convert" hx-swap="beforeend">
-				    <select name="from">
-				    	for _, currency := range(currencies) {
-				    		<option value={ currency }>{ currency } </option>
-                        }
-				    </select>
-                    <input type="number" name="value" placeholder="Inset the value to convert" />
-                    <div> to </div>
-				    <select name="to">
-				    	for _, currency := range(currencies) {
-				    		<option value={ currency }>{ currency } </option>
-                        }
-				    </select>
-                    <button type="submit"> submit </button>
+                <form class="flex flex-col content-center self-center" hx-post="/convert" hx-swap="beforeend">
+				    <div class="flex">
+                        <select name="from" class="bg-transparent">
+				        	for _, currency := range(currencies) {
+				        		<option value={ currency }>{ currency } </option>
+                            }
+				        </select>
+                        <input type="number" name="value" placeholder="Inset the value to convert" />
+				        <select name="to" class="bg-transparent">
+                            <option hiden disabled selected value>to</option>
+				        	for _, currency := range(currencies) {
+				        		<option value={ currency }>{ currency } </option>
+                            }
+				        </select>
+                    </div>
+                    <button 
+                        class="self-center p-1 rounded bg-slate-100 hover:bg-slate-200 active:bg-slate-400" type="submit"
+                    > 
+                        submit
+                    </button>
                 </form>
 			</div>
 		</body>
